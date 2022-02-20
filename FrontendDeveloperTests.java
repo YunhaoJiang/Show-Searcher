@@ -62,5 +62,4 @@ public class FrontendDeveloperTests {
     System.out.println("test4: " + test4());
     System.out.println("test5: " + test5());
   }
-
 }
