@@ -79,7 +79,7 @@ public class FrontendDeveloperTests {
       frontend.runCommandLoop();
       String output = tester.checkOutput();
 
-      if (!output.contains("_x_ [N]etflix") || !output.contains("___ [D]isney+")){
+      if (!output.contains("_x_ [N]etflix") || !output.contains("___ [D]isney+")) {
         System.out.println("Test 3 failed, filterProvider and displayFilter does not display the "
             + "filter status correctly.");
         return false;
@@ -106,7 +106,7 @@ public class FrontendDeveloperTests {
       frontend.runCommandLoop();
       String output = tester.checkOutput();
 
-      if (!output.contains("Test1") || !output.contains("Test3") || !output.contains("_x_")){
+      if (!output.contains("Test1") || !output.contains("Test3") || !output.contains("_x_")) {
         System.out.println("Test 4 failed: the menu does not recognize letter command correctly.");
         return false;
       }
@@ -132,7 +132,7 @@ public class FrontendDeveloperTests {
       frontend.displayShows(shows);
       String output = tester.checkOutput();
 
-      if (!output.equals("Found 0/4 matches.\n")){
+      if (!output.equals("Found 0/4 matches.\n")) {
         System.out.println("Test 5 failed: displayShows should not display other things when the "
             + "list is empty.");
         return false;

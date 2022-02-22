@@ -5,16 +5,17 @@
 // Lecture #: 002 @1:00pm
 // Notes to Grader: :)
 
+
 /**
  * PLACEHOLDER class for IShow objects
  */
-public class Show implements IShow{
+public class Show implements IShow {
   private String title;
   private int year;
   private int rating;
   private String providers;
 
-  public Show (String title, int year, int rating, String providers){
+  public Show(String title, int year, int rating, String providers) {
     this.title = title;
     this.year = year;
     this.rating = rating;
