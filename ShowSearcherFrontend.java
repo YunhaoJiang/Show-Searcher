@@ -127,7 +127,7 @@ public class ShowSearcherFrontend implements IShowSearcherFrontend {
   public void titleSearch() {
     System.out.print("Choose a word that you would like to search for: ");
     String userKeyword = this.scnr.next();
-    this.scnr.nextLine();
+    this.scnr.nextLine(); // skip the \n in the input
     List<IShow> searchResult = this.backend.searchByTitleWord(userKeyword);
     this.displayShows(searchResult);
   }
@@ -141,15 +141,15 @@ public class ShowSearcherFrontend implements IShowSearcherFrontend {
       System.out.print("Enter the year that you would like to search for: ");
       try {
         yearNumber = this.scnr.nextInt();
-        this.scnr.nextLine();
-        if (yearNumber > 0){
+        this.scnr.nextLine(); // skip the \n in the input
+        if (yearNumber > 0) {
           correctInput = true;
         } else {
           System.out.println("INCORRECT INPUT. Please enter an VALID year number.");
         }
-      }catch (InputMismatchException e){
+      } catch (InputMismatchException e) {
         System.out.println("INCORRECT INPUT. Please enter an INTEGER year number.");
-        this.scnr.nextLine();
+        this.scnr.nextLine(); // skip the \n in the input
       }
     } while (!correctInput);
 

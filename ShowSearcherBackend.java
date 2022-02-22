@@ -1,9 +1,14 @@
-
+// --== CS400 Project One File Header ==--
+// Name: Yunhao Jiang
+// CSL Username: yunhaoj
+// Email: jiang297@wisc.edu
+// Lecture #: 002 @1:00pm
+// Notes to Grader: :)
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Placeholder class for backend objects not included in the git
+ * PLACEHOLDER class for backend objects not included in the git
  */
 public class ShowSearcherBackend implements IShowSearcherBackend{
   @Override

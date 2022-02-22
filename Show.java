@@ -1,5 +1,12 @@
+// --== CS400 Project One File Header ==--
+// Name: Yunhao Jiang
+// CSL Username: yunhaoj
+// Email: jiang297@wisc.edu
+// Lecture #: 002 @1:00pm
+// Notes to Grader: :)
+
 /**
- * Placeholder class for IShow objects
+ * PLACEHOLDER class for IShow objects
  */
 public class Show implements IShow{
   private String title;
