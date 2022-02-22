@@ -1,0 +1,44 @@
+Script started on Tue Feb 22 13:01:35 2022
+Restored session: Tue Feb 22 13:01:07 CST 2022
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Yunhaos-MacBook-Pro.local/Users/yunhao.jiang/Desktop/School/COMP%20SCI%20400/Projects/Project1_BU_red[0m[27m[24m[Jyunhao.jiang@Yunhaos-MacBook-Pro Project1_BU_red % [K[?2004hggit status[?2004l
+On branch FrontendDeveloper
+Your branch is up to date with 'origin/FrontendDeveloper'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mlog[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Yunhaos-MacBook-Pro.local/Users/yunhao.jiang/Desktop/School/COMP%20SCI%20400/Projects/Project1_BU_red[0m[27m[24m[Jyunhao.jiang@Yunhaos-MacBook-Pro Project1_BU_red % [K[?2004hggit log -1[?2004l
+[?1h=[33mcommit c8a0ab95fcc2274d2207139abfb0028c44fabcdd[m[33m ([m[1;36mHEAD -> [m[1;32mFrontendDeveloper[m[33m, [m[1;31morig[m [33m[m[33m[m[1;36m[m[1;32m[m[33m[m[1;31min/FrontendDeveloper[m[33m)[m[m
+Author: Yunhao Jiang <jiang297@wisc.edu>[m
+Date:   Tue Feb 22 12:52:16 2022 -0600[m
+[m
+    reformat code[m
+[K[?1l>[1m[7m%[27m[1m[0m                                                                                ]7;file://Yunhaos-MacBook-Pro.local/Users/yunhao.jiang/Desktop/School/COMP%20SCI%20400/Projects/Project1_BU_red[0m[27m[24m[Jyunhao.jiang@Yunhaos-MacBook-Pro Project1_BU_red % [K[?2004hmmake clean[?2004l
+rm *.class
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Yunhaos-MacBook-Pro.local/Users/yunhao.jiang/Desktop/School/COMP%20SCI%20400/Projects/Project1_BU_red[0m[27m[24m[Jyunhao.jiang@Yunhaos-MacBook-Pro Project1_BU_red % [K[?2004hlls[?2004l
+FrontendDeveloperTests.java	Show.java
+IHashTableSortedSets.java	ShowSearcherApp.java
+IShow.java			ShowSearcherBackend.java
+IShowLoader.java		ShowSearcherFrontend.java
+IShowSearcherBackend.java	TextUITester.java
+IShowSearcherFrontend.java	log
+Makefile			out
+MapADT.java			tv_shows.csv
+Project1_BU_red.iml
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Yunhaos-MacBook-Pro.local/Users/yunhao.jiang/Desktop/School/COMP%20SCI%20400/Projects/Project1_BU_red[0m[27m[24m[Jyunhao.jiang@Yunhaos-MacBook-Pro Project1_BU_red % [K[?2004hmmake runTests[?2004l
+javac FrontendDeveloperTests.java
+java FrontendDeveloperTests
+test1: true
+test2: true
+test3: true
+test4: true
+test5: true
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Yunhaos-MacBook-Pro.local/Users/yunhao.jiang/Desktop/School/COMP%20SCI%20400/Projects/Project1_BU_red[0m[27m[24m[Jyunhao.jiang@Yunhaos-MacBook-Pro Project1_BU_red % [K[?2004heexit[?2004l
+
+Saving session...
+...saving history...truncating history files...
+...completed.
+
+Script done on Tue Feb 22 13:02:06 2022
