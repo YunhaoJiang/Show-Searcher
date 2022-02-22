@@ -1,3 +1,10 @@
+// --== CS400 Project One File Header ==--
+// Name: Yunhao Jiang
+// CSL Username: yunhaoj
+// Email: jiang297@wisc.edu
+// Lecture #: 002 @1:00pm
+// Notes to Grader: :)
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -112,11 +119,7 @@ public class ShowSearcherFrontend implements IShowSearcherFrontend {
         result += currentProvider + ", ";
       }
     }
-    try {
-      result = result.substring(0, result.length() - 2);
-    } catch (Exception e) {
-      return result;
-    }
+    result = result.substring(0, result.length() - 2);
     return result;
   }
 
@@ -131,9 +134,25 @@ public class ShowSearcherFrontend implements IShowSearcherFrontend {
 
   @Override
   public void yearSearch() {
-    System.out.print("Enter the year that you would like to search for: ");
-    int yearNumber = this.scnr.nextInt();
-    this.scnr.nextLine();
+    boolean correctInput = false;
+    int yearNumber = -1;
+
+    do {
+      System.out.print("Enter the year that you would like to search for: ");
+      try {
+        yearNumber = this.scnr.nextInt();
+        this.scnr.nextLine();
+        if (yearNumber > 0){
+          correctInput = true;
+        } else {
+          System.out.println("INCORRECT INPUT. Please enter an VALID year number.");
+        }
+      }catch (InputMismatchException e){
+        System.out.println("INCORRECT INPUT. Please enter an INTEGER year number.");
+        this.scnr.nextLine();
+      }
+    } while (!correctInput);
+
     List<IShow> searchResult = this.backend.searchByYear(yearNumber);
     this.displayShows(searchResult);
   }
