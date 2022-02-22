@@ -2,8 +2,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ShowSearcherFrontend implements IShowSearcherFrontend {
-  Scanner scnr = new Scanner(System.in);
-  ShowSearcherBackend backend = new ShowSearcherBackend();
+  Scanner scnr;
+  IShowSearcherBackend backend;
+
+  public ShowSearcherFrontend(IShowSearcherBackend backend) {
+    this.backend = backend;
+    this.scnr = new Scanner(System.in);
+  }
+
+  public ShowSearcherFrontend(String input, IShowSearcherBackend backend) {
+    this.backend = backend;
+    this.scnr = new Scanner(input);
+  }
 
   /**
    * This method drives the entire read, eval, print loop (repl) for the
@@ -69,6 +79,7 @@ public class ShowSearcherFrontend implements IShowSearcherFrontend {
     System.out.println(
         "\t4) " + (this.backend.getProviderFilter("Disney+") ? "_x_" : "___") + " [D]isney+");
     System.out.println("\t5) [Q]uit toggling provider filters");
+    System.out.print("Choose a command from the menu above: ");
   }
 
   @Override
@@ -83,11 +94,12 @@ public class ShowSearcherFrontend implements IShowSearcherFrontend {
 
   @Override
   public void displayShows(List<IShow> shows) {
+    System.out.println("Found " + shows.size() + "/" + backend.getNumberOfShows() + " matches.");
     for (int i = 0; i < shows.size(); i++) {
       IShow currentShow = shows.get(i);
-      System.out.println(i + ". " + currentShow.getTitle());
-      System.out.print(
-          "\t" + currentShow.getRating() + "100 (" + currentShow.getYear() + ") " + "on: "
+      System.out.println(i + 1 + ". " + currentShow.getTitle());
+      System.out.println(
+          "\t" + currentShow.getRating() + "/100 (" + currentShow.getYear() + ") on: "
               + this.checkProviders(currentShow));
     }
   }
@@ -100,24 +112,28 @@ public class ShowSearcherFrontend implements IShowSearcherFrontend {
         result += currentProvider + ", ";
       }
     }
-    result = result.substring(0, result.length() - 2);
+    try {
+      result = result.substring(0, result.length() - 2);
+    } catch (Exception e) {
+      return result;
+    }
     return result;
   }
 
   @Override
   public void titleSearch() {
-    System.out.println("Choose a word that you would like to search for: ");
+    System.out.print("Choose a word that you would like to search for: ");
     String userKeyword = this.scnr.next();
-    this.scnr.nextLine();// TODO: check skip the linebreak
+    this.scnr.nextLine();
     List<IShow> searchResult = this.backend.searchByTitleWord(userKeyword);
     this.displayShows(searchResult);
   }
 
   @Override
   public void yearSearch() {
-    System.out.println("Enter the year that you would like to search for: ");
+    System.out.print("Enter the year that you would like to search for: ");
     int yearNumber = this.scnr.nextInt();
-    this.scnr.nextLine();// TODO: check skip the linebreak
+    this.scnr.nextLine();
     List<IShow> searchResult = this.backend.searchByYear(yearNumber);
     this.displayShows(searchResult);
   }
