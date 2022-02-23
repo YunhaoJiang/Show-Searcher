@@ -21,26 +21,22 @@ public class Show implements IShow{
 
 	@Override
 	public String getTitle() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.Title;
 	}
 
 	@Override
 	public int getYear() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.Year;
 	}
 
 	@Override
 	public int getRating() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.Rating;
 	}
 
 	@Override
 	public boolean isAvailableOn(String provider) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.Providers.contains(provider);
 	}
 
 }
