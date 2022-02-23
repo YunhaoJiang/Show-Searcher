@@ -1,9 +1,21 @@
 
 public class Show implements IShow{
+	protected final String Title;
+	protected final int Year;
+	protected int Rating;
+	protected String Providers;
+	
+	public Show(String title, int year, int rating, String providers) {
+		this.Title=title;
+		this.Year=year;
+		this.Rating=rating;
+		this.Providers=providers;
+	}
 
-	@Override
+	
 	public int compareTo(IShow o) {
-		// TODO Auto-generated method stub
+		if(this.Rating > o.getRating()) return 1;
+		else if(this.Rating < o.getRating()) return -1;
 		return 0;
 	}
 
