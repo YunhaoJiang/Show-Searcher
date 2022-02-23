@@ -16,7 +16,7 @@ import java.io.FileNotFoundException;
 public interface IShowLoader {
 
     /**
-     * This method loads the list of songs described within a CSV file.
+     * This method loads the list of shows described within a CSV file.
      * @param filepath is relative to executable's working directory
      * @return a list of show objects that were read from specified file
      */
