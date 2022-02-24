@@ -1,4 +1,4 @@
-run: DataWranglerTests.class ShowLoader.class Show.class
+runTests: DataWranglerTests.class ShowLoader.class Show.class
 	java DataWranglerTests
 
 DataWranglerTests.class: DataWranglerTests.java
