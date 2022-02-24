@@ -1,3 +1,9 @@
+// --== CS400 Project One W3 ==--
+// Name: Mojtaba Javid
+// Role: Data Wrangler
+// CSL Username: mojtaba
+// Email: javid2@wisc.edu
+// Lecture #: 002 @1:00pm
 
 public class Show implements IShow{
 	protected final String Title;
