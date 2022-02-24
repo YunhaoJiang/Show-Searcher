@@ -67,7 +67,11 @@ public class Show implements IShow{
 	 */
 	@Override
 	public boolean isAvailableOn(String provider) {
-		return this.Providers.contains(provider);
+		String p = provider.toLowerCase();
+		String a = this.Providers.toLowerCase();
+		//to avoid any unforeseen bug or input
+		
+		return a.contains(p);
 	}
 
 }

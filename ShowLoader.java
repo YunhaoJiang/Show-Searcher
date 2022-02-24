@@ -26,7 +26,7 @@ public class ShowLoader implements IShowLoader{
 	public List<IShow> loadShows(String filepath) throws FileNotFoundException {
 		List<IShow> ShowsList = new ArrayList<IShow>();
 		try {
-			File shows = new File("filepath");
+			File shows = new File(filepath);
 			BufferedReader br = new BufferedReader(new FileReader(shows));
 			br.readLine(); //omitting the fist line being the headers
 			
@@ -62,35 +62,54 @@ public class ShowLoader implements IShowLoader{
      * @param string of a show detail, obtained from the file
      * @return a show object
      */
-	private Show ShowObject(String s) {
+	protected Show ShowObject(String s) {
+		if(s == null || s.equals("")) return null;
 		String S = s.substring(s.indexOf(',', s.indexOf(',')+1)+1);
 		String[] show = S.split(",");
-		if(show.length > 10) {
+		if(show == null || show.length<10) return null;
+		
+		int l =0;
+		while(show.length-l > 10){
 			for(int i=0; i<show.length; i++) {
 				if(show[i].contains("\"")) {
-					show[i]= show[i].concat(show[i+1]);
-					for(int j = i; j<show.length-1; j++) {
+					show[i]= show[i].concat("," + show[i+1]);
+					for(int j = i+1; j<show.length-1; j++) {
 						show[j]=show[j+1];
 						show[show.length-1]=null;
 					}
+					l++;
 					break;}
 			}
+			
 		}
 		
 		for(int i=0; i<show.length; i++) {
-			if(show[i].charAt(0) == '"') {
-				show[i] = show[i].substring(1, show[i].length()-2);}}
+			if(show[i] != null && !show[i].equals("") && show[i].charAt(0) == '"') {
+				show[i] = show[i].substring(1, show[i].length()-1);}}
+		
+		String provider ="";
 		
 		String N=null;
-		if(show[5].equals("1")) N = "Netflix, ";
+		if(show[5].equals("1")) {
+			N = "Netflix";
+			provider = provider + N;
+		}
 		String H=null;
-		if(show[6].equals("1")) H = "Hulu, ";
+		if(show[6].equals("1")) {
+			H = ", Hulu";
+			provider = provider + H;
+		}
 		String P=null;
-		if(show[7].equals("1")) P = "Prime Video, ";
+		if(show[7].equals("1")) {
+			P = ", Prime Video";
+			provider = provider + P;
+		}
 		String D=null;
-		if(show[8].equals("1")) D = "Disney+";
-
-		String provider = N + H + P + D;
-		return new Show(show[0], Integer.parseInt(show[1]), Integer.parseInt(show[4]), provider);
+		if(show[8].equals("1")) {
+			D = ", Disney+";
+			provider = provider + D;
+		}
+		
+		return new Show(show[0], Integer.parseInt(show[1]), Integer.parseInt(show[4].substring(0, show[4].indexOf("/"))), provider);
 	}
 }
