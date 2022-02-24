@@ -11,4 +11,4 @@ HashTableSortedSets.class: HashTableSortedSets.java
 	javac HashTableSortedSets.jva
        	
 clean:
-	rm *	.class              
+	rm *.class              
