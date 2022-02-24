@@ -5,6 +5,10 @@ public class Show implements IShow{
 	protected int Rating;
 	protected String Providers;
 	
+	/**
+	 * Initializes a show object of the given details
+	 * @param title, year, rating, availability/provider
+	 */
 	public Show(String title, int year, int rating, String providers) {
 		this.Title=title;
 		this.Year=year;
@@ -12,28 +16,49 @@ public class Show implements IShow{
 		this.Providers=providers;
 	}
 
-	
+	/**
+	 * compares the 2 shows by their rotten tomato rating
+	 * @param show being compared to
+	 * @return 0 for being equal, 1 for being better, -1 for being worse
+	 */
+	@Override
 	public int compareTo(IShow o) {
 		if(this.Rating > o.getRating()) return 1;
 		else if(this.Rating < o.getRating()) return -1;
 		return 0;
 	}
 
+	/**
+	 * retrieve the title of this show object
+	 * @return title
+	 */
 	@Override
 	public String getTitle() {
 		return this.Title;
 	}
 
+	/**
+	 * retrieve the year this show war first produced
+	 * @return year
+	 */
 	@Override
 	public int getYear() {
 		return this.Year;
 	}
 
+	/**
+	 * retrieve the rotten tomato rating of this show object
+	 * @return rating
+	 */
 	@Override
 	public int getRating() {
 		return this.Rating;
 	}
 
+	/**
+	 * checks the availability of the show based on its Provider field
+	 * @return true if available
+	 */
 	@Override
 	public boolean isAvailableOn(String provider) {
 		return this.Providers.contains(provider);

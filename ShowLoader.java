@@ -10,17 +10,22 @@ import java.util.Queue;
 
 public class ShowLoader implements IShowLoader{
 
+	/**
+     * This method loads the list of shows described within a CSV file.
+     * @param filepath is relative to executable's working directory
+     * @return a list of show objects that were read from specified file
+     */
 	@Override
 	public List<IShow> loadShows(String filepath) throws FileNotFoundException {
 		List<IShow> ShowsList = new ArrayList<IShow>();
 		try {
 			File shows = new File("filepath");
 			BufferedReader br = new BufferedReader(new FileReader(shows));
-			br.readLine();
+			br.readLine(); //omitting the fist line being the headers
 			
-			Queue<String> showRows = fileRows(br);
+			Queue<String> showRows = this.fileRows(br);
 			while(!showRows.isEmpty()) {
-				ShowsList.add(ShowObject(showRows.poll()));}
+				ShowsList.add(this.ShowObject(showRows.poll()));}
 			
 		} catch (IOException e) {
 			throw new FileNotFoundException ("file not found");}
@@ -29,6 +34,12 @@ public class ShowLoader implements IShowLoader{
 		return ShowsList;
 	}
 
+	/**
+     * helper method
+     * reads each line and adds them into a queue for easier access
+     * @param BufferedReader of the specified file
+     * @return a queue of each row of the file as an string
+     */
 	private Queue<String> fileRows(BufferedReader br) throws IOException {
 		String row;
 		Queue<String> rows = new ArrayDeque<String>();
@@ -38,6 +49,12 @@ public class ShowLoader implements IShowLoader{
 		return rows;
 	}
 	
+	/**
+     * helper method
+     * takes a row string and transforms it into a show object
+     * @param string of a show detail, obtained from the file
+     * @return a show object
+     */
 	private Show ShowObject(String s) {
 		String S = s.substring(s.indexOf(',', s.indexOf(',')+1)+1);
 		String[] show = S.split(",");
