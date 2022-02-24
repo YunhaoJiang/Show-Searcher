@@ -8,7 +8,7 @@ HashtableMap.class:	HashtableMap.java	HashTableSortedSets.class
 	javac HashtableMap.java
 	
 HashTableSortedSets.class: HashTableSortedSets.java
-	javac HashTableSortedSets.jva
+	javac HashTableSortedSets.java
        	
 clean:
 	rm *.class              
