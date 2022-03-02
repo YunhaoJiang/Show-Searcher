@@ -3,8 +3,8 @@ import java.util.List;
 
 public class ShowSearcherBackend implements IShowSearcherBackend {
 
-  private TempHashTableSortedSets<String, IShow> titleSet;
-  private TempHashTableSortedSets<Integer, IShow> yearSet;
+  private HashTableSortedSets<String, IShow> titleSet;
+  private HashTableSortedSets<Integer, IShow> yearSet;
   private boolean Netflix;
   private boolean Hulu;
   private boolean PrimeVid;
@@ -16,8 +16,8 @@ public class ShowSearcherBackend implements IShowSearcherBackend {
    */
 
   public ShowSearcherBackend() {
-    titleSet = new TempHashTableSortedSets<String, IShow>();
-    yearSet = new TempHashTableSortedSets<Integer, IShow>();
+    titleSet = new HashTableSortedSets<String, IShow>();
+    yearSet = new HashTableSortedSets<Integer, IShow>();
     this.Netflix = true;
     this.Hulu = true;
     this.PrimeVid = true;
@@ -41,7 +41,7 @@ public class ShowSearcherBackend implements IShowSearcherBackend {
 
     // Filter the copied list
     for (IShow i : shows) {
-      i = (TempShow) i;
+      i = (Show) i;
       if (!this.Netflix) {
         if (i.isAvailableOn("Netflix")) {
           filterList.remove(i);
