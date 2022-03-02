@@ -1,88 +1,78 @@
-// --== CS400 Project One File Header ==--
-// Name: Yunhao Jiang
-// CSL Username: yunhaoj
-// Email: jiang297@wisc.edu
+// --== CS400 Project One W3 ==--
+// Name: Mojtaba Javid
+// Role: Data Wrangler
+// CSL Username: mojtaba
+// Email: javid2@wisc.edu
 // Lecture #: 002 @1:00pm
-// Notes to Grader: :)
 
+public class Show implements IShow{
+	protected final String Title;
+	protected final int Year;
+	protected int Rating;
+	protected String Providers;
+	
+	/**
+	 * Initializes a show object of the given details
+	 * @param title, year, rating, availability/provider
+	 */
+	public Show(String title, int year, int rating, String providers) {
+		this.Title=title;
+		this.Year=year;
+		this.Rating=rating;
+		this.Providers=providers;
+	}
 
-/**
- * PLACEHOLDER class for IShow objects
- */
-public class Show implements IShow {
-  private String title;
-  private int year;
-  private int rating;
-  private String providers;
+	/**
+	 * compares the 2 shows by their rotten tomato rating
+	 * @param show being compared to
+	 * @return 0 for being equal, 1 for being better, -1 for being worse
+	 */
+	@Override
+	public int compareTo(IShow o) {
+		if(this.Rating > o.getRating()) return 1;
+		else if(this.Rating < o.getRating()) return -1;
+		return 0;
+	}
 
-  public Show(String title, int year, int rating, String providers) {
-    this.title = title;
-    this.year = year;
-    this.rating = rating;
-    this.providers = providers;
-  }
+	/**
+	 * retrieve the title of this show object
+	 * @return title
+	 */
+	@Override
+	public String getTitle() {
+		return this.Title;
+	}
 
-  @Override
-  public String getTitle() {
-    return this.title;
-  }
+	/**
+	 * retrieve the year this show war first produced
+	 * @return year
+	 */
+	@Override
+	public int getYear() {
+		return this.Year;
+	}
 
-  @Override
-  public int getYear() {
-    return this.year;
-  }
+	/**
+	 * retrieve the rotten tomato rating of this show object
+	 * @return rating
+	 */
+	@Override
+	public int getRating() {
+		return this.Rating;
+	}
 
-  @Override
-  public int getRating() {
-    return this.rating;
-  }
+	/**
+	 * checks the availability of the show based on its Provider field
+	 * @return true if available
+	 */
+	@Override
+	public boolean isAvailableOn(String provider) {
+		String p = provider.toLowerCase();
+		String a = this.Providers.toLowerCase();
+		//to avoid any unforeseen bug or input
+		
+		return a.contains(p);
+	}
 
-  @Override
-  public boolean isAvailableOn(String provider) {
-    return this.providers.contains(provider);
-  }
-
-  /**
-   * Compares this object with the specified object for order.  Returns a
-   * negative integer, zero, or a positive integer as this object is less
-   * than, equal to, or greater than the specified object.
-   *
-   * <p>The implementor must ensure
-   * {@code sgn(x.compareTo(y)) == -sgn(y.compareTo(x))}
-   * for all {@code x} and {@code y}.  (This
-   * implies that {@code x.compareTo(y)} must throw an exception iff
-   * {@code y.compareTo(x)} throws an exception.)
-   *
-   * <p>The implementor must also ensure that the relation is transitive:
-   * {@code (x.compareTo(y) > 0 && y.compareTo(z) > 0)} implies
-   * {@code x.compareTo(z) > 0}.
-   *
-   * <p>Finally, the implementor must ensure that {@code x.compareTo(y)==0}
-   * implies that {@code sgn(x.compareTo(z)) == sgn(y.compareTo(z))}, for
-   * all {@code z}.
-   *
-   * <p>It is strongly recommended, but <i>not</i> strictly required that
-   * {@code (x.compareTo(y)==0) == (x.equals(y))}.  Generally speaking, any
-   * class that implements the {@code Comparable} interface and violates
-   * this condition should clearly indicate this fact.  The recommended
-   * language is "Note: this class has a natural ordering that is
-   * inconsistent with equals."
-   *
-   * <p>In the foregoing description, the notation
-   * {@code sgn(}<i>expression</i>{@code )} designates the mathematical
-   * <i>signum</i> function, which is defined to return one of {@code -1},
-   * {@code 0}, or {@code 1} according to whether the value of
-   * <i>expression</i> is negative, zero, or positive, respectively.
-   *
-   * @param o the object to be compared.
-   * @return a negative integer, zero, or a positive integer as this object
-   * is less than, equal to, or greater than the specified object.
-   * @throws NullPointerException if the specified object is null
-   * @throws ClassCastException   if the specified object's type prevents it
-   *                              from being compared to this object.
-   */
-  @Override
-  public int compareTo(IShow o) {
-    return 0;
-  }
+>>>>>>> DataWrangler
 }
