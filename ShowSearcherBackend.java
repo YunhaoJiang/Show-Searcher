@@ -188,4 +188,3 @@ public class ShowSearcherBackend implements IShowSearcherBackend {
   }
 
 }
->>>>>>> BackendDeveloper

@@ -73,6 +73,4 @@ public class Show implements IShow{
 		
 		return a.contains(p);
 	}
-
->>>>>>> DataWrangler
 }
