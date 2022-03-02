@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 
 public class BackendDeveloperTests {
 
@@ -16,9 +17,9 @@ public class BackendDeveloperTests {
     test.addShow(hulu);
     test.addShow(primeVideo);
     // Checks if all the shows returned has the word 'show' in it
-    if (!test.searchByTitleWord("show").toString()
-        .equals("[Netflix show, Hulu show, Prime Video show]")) {
-      return false;
+    LinkedList<IShow> showList = (LinkedList<IShow>)test.searchByTitleWord("show");
+    if (!showList.contains(netflix) || !showList.contains(hulu) || !showList.contains(primeVideo)){
+    	return false;
     }
     return true;
   }
@@ -36,12 +37,15 @@ public class BackendDeveloperTests {
     Show disney = new Show("Disney+ show", 2021, 7, "Disney+");
     test.addShow(disney);
 
+    LinkedList<IShow> showList = (LinkedList<IShow>)test.searchByTitleWord("show");
+    
     // Checks if Disney+ show shows up when searching 'Disney+'
-    if (!test.searchByTitleWord("Disney+").toString().equals("[Disney+ show]")) {
-      return false;
+    if (!showList.contains(disney)){
+    	return false;
     }
 
     // Checks if Disney+ show and all original shows show up when searching 'show'
+    
     if (!test.searchByTitleWord("show").toString()
         .equals("[Netflix show, Hulu show, Prime Video show, Disney+ show]")) {
       return false;
@@ -58,6 +62,12 @@ public class BackendDeveloperTests {
    */
   public static boolean test3() {
     ShowSearcherBackend test = new ShowSearcherBackend();
+    Show netflix = new Show("Netflix show",2021,10,"Netflix");
+    Show hulu = new Show("Hulu show",2021,10,"Hulu");
+    Show primeVideo = new Show("Prime Video show",2021,10,"Prime Video");
+    test.addShow(netflix);
+    test.addShow(hulu);
+    test.addShow(primeVideo);
 
     // Creates and adds a Disney+ show
     Show disney = new Show("Disney+ show", 2021, 7, "Disney+");
@@ -82,6 +92,13 @@ public class BackendDeveloperTests {
    */
   public static boolean test4() {
     ShowSearcherBackend test = new ShowSearcherBackend();
+    Show netflix = new Show("Netflix show",2021,10,"Netflix");
+    Show hulu = new Show("Hulu show",2021,10,"Hulu");
+    Show primeVideo = new Show("Prime Video show",2021,10,"Prime Video");
+    test.addShow(netflix);
+    test.addShow(hulu);
+    test.addShow(primeVideo);
+
 
     // Creates and adds Disney+ show
     Show disney = new Show("Disney+ show", 2021, 7, "Disney+");
@@ -101,10 +118,18 @@ public class BackendDeveloperTests {
    */
   public static boolean test5() {
     ShowSearcherBackend test = new ShowSearcherBackend();
+    Show netflix = new Show("Netflix show",2021,10,"Netflix");
+    Show hulu = new Show("Hulu show",2021,10,"Hulu");
+    Show primeVideo = new Show("Prime Video show",2021,10,"Prime Video");
+    test.addShow(netflix);
+    test.addShow(hulu);
+    test.addShow(primeVideo);
+
 
     // Checks the size of the show list
     if (test.getNumberOfShows() != 3) {
-      return false;
+        System.out.println("HERE");
+	return false;
     }
 
     // Creates and adds a Disney+ show
