@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class ShowSearcherBackend implements IShowSearcherBackend {
 
@@ -82,7 +84,7 @@ public class ShowSearcherBackend implements IShowSearcherBackend {
 
     // Add the show to the hashtable corresponding to each word
     for (int i = 0; i < splitTitle.length; i++) {
-      titleSet.add(splitTitle[i], show);
+      titleSet.add(splitTitle[i].toLowerCase(), show);
     }
 
     // Adds the show to the hashtable corresponding to the year
@@ -173,6 +175,12 @@ public class ShowSearcherBackend implements IShowSearcherBackend {
    * @return list of shows with the key word in it and is in the selected providers
    */
   public List<IShow> searchByTitleWord(String word) {
+   word = word.toLowerCase();
+    try{
+      List<IShow> wordList = titleSet.get(word);
+    } catch (NoSuchElementException e){
+      return new ArrayList<>();
+    }
     return filterShows(titleSet.get(word));
   }
 
@@ -184,6 +192,11 @@ public class ShowSearcherBackend implements IShowSearcherBackend {
    * @return list of shows made in specified year and is in the selected providers
    */
   public List<IShow> searchByYear(int year) {
+    try{
+      List<IShow> yearList = yearSet.get(year);
+    } catch (NoSuchElementException e){
+      return new ArrayList<>();
+    }
     return filterShows(yearSet.get(year));
   }
 

@@ -27,7 +27,7 @@ public class HashTableSortedSets<KeyType, ValueType extends Comparable<ValueType
 		    list = this.get(key);
 		    int idx = 0;
 		    for(ValueType v: list) {
-		    	if(v.compareTo(value)>=0) {
+		    	if(v.compareTo(value)<=0) {
 		    		break;
 		    	}
 		    	idx ++;
