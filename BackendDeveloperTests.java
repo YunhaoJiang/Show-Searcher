@@ -32,24 +32,31 @@ public class BackendDeveloperTests {
    */
   public static boolean test2() {
     ShowSearcherBackend test = new ShowSearcherBackend();
+    Show netflix = new Show("Netflix show",2021,10,"Netflix");
+    Show hulu = new Show("Hulu show",2021,10,"Hulu");
+    Show primeVideo = new Show("Prime Video show",2021,10,"Prime Video");
+    test.addShow(netflix);
+    test.addShow(hulu);
+    test.addShow(primeVideo);
 
     // Creates and adds a Disney+ show
     Show disney = new Show("Disney+ show", 2021, 7, "Disney+");
     test.addShow(disney);
 
-    LinkedList<IShow> showList = (LinkedList<IShow>)test.searchByTitleWord("show");
+    LinkedList<IShow> showList = (LinkedList<IShow>)test.searchByTitleWord("Disney+");
     
     // Checks if Disney+ show shows up when searching 'Disney+'
     if (!showList.contains(disney)){
     	return false;
     }
 
-    // Checks if Disney+ show and all original shows show up when searching 'show'
+    showList = (LinkedList<IShow>)test.searchByTitleWord("show");
     
-    if (!test.searchByTitleWord("show").toString()
-        .equals("[Netflix show, Hulu show, Prime Video show, Disney+ show]")) {
-      return false;
+    // Checks if Disney+ show and all original shows show up when searching 'show'
+    if (!showList.contains(disney) || !showList.contains(netflix) || !showList.contains(hulu) || !showList.contains(primeVideo)){
+    	return false;
     }
+    
     return true;
   }
 
@@ -77,9 +84,11 @@ public class BackendDeveloperTests {
     test.toggleProviderFilter("Netflix");
     test.setProviderFilter("Hulu", false);
 
+    LinkedList<IShow> showList = (LinkedList<IShow>)test.searchByTitleWord("show");
+    
     // Checks to see if only Prime Video show and Disney+ show remains if searching by 'show'
-    if (!test.searchByTitleWord("show").toString().equals("[Prime Video show, Disney+ show]")) {
-      return false;
+    if (!showList.contains(disney) || !showList.contains(primeVideo)){
+    	return false;
     }
     return true;
   }
@@ -104,9 +113,11 @@ public class BackendDeveloperTests {
     Show disney = new Show("Disney+ show", 2021, 7, "Disney+");
     test.addShow(disney);
 
+    LinkedList<IShow> showList = (LinkedList<IShow>)test.searchByYear(2021);
+    
     // Checks if the correct shows are return when searching by year 2021
-    if (!test.searchByYear(2021).toString().equals("[Prime Video show, Disney+ show]")) {
-      return false;
+    if (!showList.contains(disney) || !showList.contains(primeVideo)){
+    	return false;
     }
     return true;
   }
@@ -128,7 +139,6 @@ public class BackendDeveloperTests {
 
     // Checks the size of the show list
     if (test.getNumberOfShows() != 3) {
-        System.out.println("HERE");
 	return false;
     }
 
@@ -144,11 +154,11 @@ public class BackendDeveloperTests {
   }
 
   public static void main(String[] args) {
-    System.out.println("Test 1: " + test1());
-    System.out.println("Test 2: " + test2());
-    System.out.println("Test 3: " + test3());
-    System.out.println("Test 4: " + test4());
-    System.out.println("Test 5: " + test5());
-  }
+		System.out.println("Test1: " + test1());
+		System.out.println("Test2: " + test2());
+		System.out.println("Test3: " + test3());
+		System.out.println("Test4: " + test4());
+		System.out.println("Test5: " + test5());
+	}
 
 }

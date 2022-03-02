@@ -7,6 +7,7 @@ public class ShowSearcherBackend implements IShowSearcherBackend {
 
   private HashTableSortedSets<String, IShow> titleSet;
   private HashTableSortedSets<Integer, IShow> yearSet;
+  private int size;
   private boolean Netflix;
   private boolean Hulu;
   private boolean PrimeVid;
@@ -20,6 +21,7 @@ public class ShowSearcherBackend implements IShowSearcherBackend {
   public ShowSearcherBackend() {
     titleSet = new HashTableSortedSets<String, IShow>();
     yearSet = new HashTableSortedSets<Integer, IShow>();
+    this.size = 0;
     this.Netflix = true;
     this.Hulu = true;
     this.PrimeVid = true;
@@ -89,6 +91,7 @@ public class ShowSearcherBackend implements IShowSearcherBackend {
 
     // Adds the show to the hashtable corresponding to the year
     yearSet.add(show.getYear(), show);
+    this.size ++;
   }
 
   @Override
@@ -98,7 +101,7 @@ public class ShowSearcherBackend implements IShowSearcherBackend {
    * @return database size
    */
   public int getNumberOfShows() {
-    return titleSet.size();
+    return this.size;
   }
 
   @Override
