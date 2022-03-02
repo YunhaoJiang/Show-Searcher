@@ -14,7 +14,7 @@ public class ShowSearcherApp {
     IShowLoader loader = new ShowLoader(); //new ShowLoader();
     List<IShow> shows = null;
     try {
-      shows = loader.loadShows("data/tv_shows.csv");
+      shows = loader.loadShows("tv_shows.csv");
     } catch (FileNotFoundException e) {
       System.out.println("Error File Not Found");
       e.printStackTrace();
