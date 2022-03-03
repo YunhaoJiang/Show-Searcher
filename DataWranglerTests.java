@@ -128,6 +128,6 @@ public class DataWranglerTests {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("1: " + test1() + "   2: " + test2() + "   3: " + test3() + "   4: " + test4() + "   5: " + test5() + "   6: " + test6() + "   7: " + test7());
+		System.out.println("1: " + test1() + "   2: " + test2() + "   3: " + test3() + "   4: " + test4() + "   5: " + test5() + "   6(additional): " + test6() + "   7(additional): " + test7());
 	}
 }
