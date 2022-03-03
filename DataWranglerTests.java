@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 public class DataWranglerTests {
 	//constructors 
 	public static Show a = new Show("Rick & Morty", 2013, 100, "Netflix, Hulu");
-	public static Show b = new Show("Whitcher", 2019, 96, "Netflix, Disney+");
+	public static Show b = new Show("Witcher", 2019, 96, "Netflix, Disney+");
 	public static Show c = new Show("Sherlock", 2011, 100, "Prime video, Disney+");
 	
 	//accessors
@@ -126,8 +126,35 @@ public class DataWranglerTests {
 		
 		return true;
 	}
+
+
+        //test for backend [title search]
+	public static boolean test8() {
+		ShowSearcherBackend test = new ShowSearcherBackend();
+		test.addShow(a);
+		test.addShow(b);
+		test.addShow(c);
+		
+		if(!test.searchByTitleWord("Rick").contains(a) || !test.searchByTitleWord("Witcher").contains(b) 
+				|| !test.searchByTitleWord("&").contains(a) || !test.searchByTitleWord("Sherlock").contains(c)) return false;
+		
+		return true;
+	}
+	
+	//test for backend [year search]
+	public static boolean test9() {
+		ShowSearcherBackend test = new ShowSearcherBackend();
+		test.addShow(a);
+		test.addShow(b);
+		test.addShow(c);
+		
+		if(!test.searchByYear(2013).contains(a) || !test.searchByYear(2019).contains(b) || !test.searchByYear(2011).contains(c)) return false;
+		
+		return true;
+	}
 	
 	public static void main(String[] args) {
-		System.out.println("1: " + test1() + "   2: " + test2() + "   3: " + test3() + "   4: " + test4() + "   5: " + test5() + "   6(additional): " + test6() + "   7(additional): " + test7());
+		System.out.println("1: " + test1() + "   2: " + test2() + "   3: " + test3() + "   4: " + test4() + "   5: " + test5()
+		+ "   6(additional): " + test6() + "   7(additional): " + test7() + "   8(additional for BED): " + test8() + "   9(additional for BED): " + test9());
 	}
 }
