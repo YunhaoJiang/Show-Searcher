@@ -251,6 +251,22 @@ public class BackendDeveloperTests {
 		}
 	}
 
+	public static boolean test8() {
+		Show testShow = new Show("TEST SHOW", 1000, 5, "Netflix");
+		if(!testShow.isAvailableOn("Netflix")){
+			return false;
+		}
+		return true;
+	}
+
+	public static boolean test9() {
+		Show testShow = new Show("FUTURE SHOW", 3000, 10, "Netflix");
+		if(testShow.getYear() != 3000){
+			return false;
+		}
+		return true;
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Test1: " + test1());
 		System.out.println("Test2: " + test2());
@@ -259,6 +275,9 @@ public class BackendDeveloperTests {
 		System.out.println("Test5: " + test5());
 		System.out.println("Test6 (Additional): " + test6());
 		System.out.println("Test7 (Additional): " + test7());
+		System.out.println("Extra Data Wrangler Test 1: " + test8());
+		System.out.println("Extra Data Wrangler Test 2: " + test9());
+
 	}
 
 }
