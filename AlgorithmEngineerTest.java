@@ -63,7 +63,7 @@ public class AlgorithmEngineerTest {
 				prv = s;
 				continue;
 			}
-			if(prv.compareTo(s) > 0) {
+			if(prv.compareTo(s) < 0) {
 				return false;
 			}
 			prv = s;
@@ -157,9 +157,6 @@ public class AlgorithmEngineerTest {
 	else {
 		System.out.println("test5 Failed!");
 	}
-	
-	
-	
 }
 	
 }
