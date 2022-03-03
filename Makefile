@@ -1,22 +1,22 @@
-run: clean ShowSearcherApp.java
+run: ShowSearcherApp.java
 	javac ShowSearcherApp.java
 	java ShowSearcherApp
 
 runTests: runAlgorithmEngineerTest runBackendDeveloperTests runDataWranglerTests runFrontendDeveloperTests
 
-runFrontendDeveloperTests: clean FrontendDeveloperTests.java
+runFrontendDeveloperTests: FrontendDeveloperTests.java
 	javac FrontendDeveloperTests.java
 	java FrontendDeveloperTests
 
-runBackendDeveloperTests: clean BackendDeveloperTests.java
+runBackendDeveloperTests: BackendDeveloperTests.java
 	javac BackendDeveloperTests.java
 	java BackendDeveloperTests
 
-runAlgorithmEngineerTest: clean AlgorithmEngineerTest.java
+runAlgorithmEngineerTest: AlgorithmEngineerTest.java
 	javac AlgorithmEngineerTest.java
 	java AlgorithmEngineerTest
 
-runDataWranglerTests: clean DataWranglerTests.java
+runDataWranglerTests: DataWranglerTests.java
 	javac DataWranglerTests.java
 	java DataWranglerTests
 
