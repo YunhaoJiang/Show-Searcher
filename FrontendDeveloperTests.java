@@ -18,11 +18,13 @@ public class FrontendDeveloperTests {
    */
   public static boolean test1() {
     try {
-      TextUITester tester = new TextUITester("1\nwitcher\n4\n");
-      ShowSearcherApp.main(new String[5]);
+      TextUITester tester = new TextUITester("1\ntest\n4\n");
+      IShowSearcherFrontend frontend = new ShowSearcherFrontend(new FDPHShowSearcherBackend());
+      frontend.runCommandLoop();
       String output = tester.checkOutput();
 
-      if (!output.contains("1. The Witcher\n\t89/100 (2019) on: Netflix")) {
+      if (!output.contains("1. Test1\n\t50/100 (2000) on: Netflix") || !output.contains(
+          "2. Test2\n\t51/100 (2001) on: Prime Video")) {
         System.out.println("Test 1 failed, the titleSearch and displayShows does not display the "
             + "shows correctly.");
         return false;
@@ -44,12 +46,13 @@ public class FrontendDeveloperTests {
    */
   public static boolean test2() {
     try {
-      TextUITester tester = new TextUITester("2\ntest\n-1\n1951\n4\n");
-      ShowSearcherApp.main(new String[5]);
+      TextUITester tester = new TextUITester("2\ntest\n-1\n2000\n4\n");
+      IShowSearcherFrontend frontend = new ShowSearcherFrontend(new FDPHShowSearcherBackend());
+      frontend.runCommandLoop();
       String output = tester.checkOutput();
 
-      if (!output.contains("1. I Love Lucy\n\t72/100 (1951) on: Hulu") || !output.contains(
-          "2. The Roy Rogers Show\n\t48/100 (1951) on: Prime Video")) {
+      if (!output.contains("1. Test3\n\t50/100 (2000) on: Netflix") || !output.contains(
+          "2. Test4\n\t51/100 (2001) on: Prime Video")) {
         System.out.println("Test 2 failed, the yearSearch and displayShows does not display the "
             + "shows correctly.");
         return false;
@@ -71,8 +74,9 @@ public class FrontendDeveloperTests {
    */
   public static boolean test3() {
     try {
-      TextUITester tester = new TextUITester("3\n4\n5\n4\n");
-      ShowSearcherApp.main(new String[5]);
+      TextUITester tester = new TextUITester("3\n5\n4\n");
+      IShowSearcherFrontend frontend = new ShowSearcherFrontend(new FDPHShowSearcherBackend());
+      frontend.runCommandLoop();
       String output = tester.checkOutput();
 
       if (!output.contains("_x_ [N]etflix") || !output.contains("___ [D]isney+")) {
@@ -97,11 +101,12 @@ public class FrontendDeveloperTests {
    */
   public static boolean test4() {
     try {
-      TextUITester tester = new TextUITester("T\nwitcher\ny\n1951\nF\nQ\nq\n");
-      ShowSearcherApp.main(new String[5]);
+      TextUITester tester = new TextUITester("T\nword\ny\n2000\nF\nQ\nq\n");
+      IShowSearcherFrontend frontend = new ShowSearcherFrontend(new FDPHShowSearcherBackend());
+      frontend.runCommandLoop();
       String output = tester.checkOutput();
 
-      if (!output.contains("The Witcher") || !output.contains("Lucy") || !output.contains("_x_")) {
+      if (!output.contains("Test1") || !output.contains("Test3") || !output.contains("_x_")) {
         System.out.println("Test 4 failed: the menu does not recognize letter command correctly.");
         return false;
       }
@@ -122,12 +127,12 @@ public class FrontendDeveloperTests {
   public static boolean test5() {
     try {
       TextUITester tester = new TextUITester("");
-      IShowSearcherFrontend frontend = new ShowSearcherFrontend(new ShowSearcherBackend());
+      IShowSearcherFrontend frontend = new ShowSearcherFrontend(new FDPHShowSearcherBackend());
       List<IShow> shows = new ArrayList<>();
       frontend.displayShows(shows);
       String output = tester.checkOutput();
 
-      if (!output.equals("Found 0/0 matches.\n")) {
+      if (!output.equals("Found 0/4 matches.\n")) {
         System.out.println("Test 5 failed: displayShows should not display other things when the "
             + "list is empty.");
         return false;
