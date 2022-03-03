@@ -39,7 +39,7 @@ public class DataWranglerTests {
 	public static boolean test3() {
 		ShowLoader showLoader = new ShowLoader();
 		try {
-			showLoader.loadShows("/home/javid2/Project1_BU_red/tv_shows.csv");
+			showLoader.loadShows("tv_shows.csv");
 		} catch (FileNotFoundException e) {
 			return false;
 		} 
@@ -51,7 +51,7 @@ public class DataWranglerTests {
 	public static boolean test4() {
 		ShowLoader sl = new ShowLoader();
 		try {
-			sl.loadShows("/home/javid2/Project1_BU_red/tv_shows.csv");
+			sl.loadShows("tv_shows.csv");
 		} catch (FileNotFoundException e) {
 			return false;
 		} 
