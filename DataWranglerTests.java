@@ -83,8 +83,50 @@ public class DataWranglerTests {
 		
 		return true;
 	}
+
+        //test using Backend code
+        public static boolean test6() {
+		ShowLoader s2 = new ShowLoader();
+		
+		Show t = s2.ShowObject("196,197,\"The ,Staircase\",2005,16+,7.9/10,74/100,1,0,0,0,1");
+		Show t2 = s2.ShowObject("196,197,\"\"The ,Staircase\"\",2005,16+,7.9/10,74/100,1,0,0,0,1");
+		Show t3 = s2.ShowObject("1065,1068,\"Nicky, Ricky, Dicky & Dawn\",2014,all,5.2/10,51/100,1,0,0,0,1");
+		
+		ShowSearcherBackend test = new ShowSearcherBackend();
+		test.addShow(t);
+		test.addShow(t2);
+		test.addShow(t3);
+		
+		if(!test.searchByTitleWord("The").contains(t) || !test.searchByTitleWord("\"The").contains(t2)) return false;
+		if(!test.searchByYear(2014).contains(t3)) return false;
+		
+		return true;
+	}
+
+        //test using AE HashtableMap
+	public static boolean test7() {
+		ShowLoader s2 = new ShowLoader();
+		
+		Show t = s2.ShowObject("196,197,\"The ,Staircase\",2005,16+,7.9/10,74/100,1,0,0,0,1");
+		Show t2 = s2.ShowObject("196,197,\"\"The ,Staircase\"\",2005,16+,7.9/10,74/100,1,0,0,0,1");
+		Show t3 = s2.ShowObject("1065,1068,\"Nicky, Ricky, Dicky & Dawn\",2014,all,5.2/10,51/100,1,0,0,0,1");
+		
+		HashtableMap<Integer, Show> test = new HashtableMap<Integer, Show>(19);
+		if(!test.put(t.Year, t)) return false;
+		if(!test.put(t2.Year, t2)) return false;
+		if(!test.put(t3.Year, t3)) return false;
+		try {
+			test.get(t.Year);
+			test.get(t3.Year);
+			test.get(t2.Year);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+		
+		return true;
+	}
 	
 	public static void main(String[] args) {
-		System.out.println("1: " + test1() + "   2: " + test2() + "   3: " + test3() + "   4: " + test4() + "   5: " + test5());
+		System.out.println("1: " + test1() + "   2: " + test2() + "   3: " + test3() + "   4: " + test4() + "   5: " + test5() + "   6: " + test6() + "   7: " + test7());
 	}
 }

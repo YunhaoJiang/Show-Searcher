@@ -66,7 +66,7 @@ public class HashtableMap<KeyType, ValueType> implements MapADT<KeyType, ValueTy
 		}
 		int idx = Math.abs(key.hashCode()) % capacity;
 		for (Node n : array[idx]) {
-			if (n.k.equals(key)) {
+			if (n.v.equals(value)) {
 				return false;
 			}
 		}
